@@ -8,6 +8,10 @@ h2 {
 	color: #333866;
 }
 
+h4 {
+	color: #adb1cc;
+}
+
 /* Main */
 .brand-icon {
 	color: #ffbd50;
@@ -29,7 +33,7 @@ li a {
 
 .active {
 	background-color: #adb1cc;
-	border-radius: 3%;
+	border-radius: 4%;
 	padding: 1px 10px;
 	color: white;
 }
@@ -71,12 +75,14 @@ li a {
 }
 
 .highlights-container div {
-	flex-basis: 45%;
+	flex-basis: 40%;
 	/* HARDCODED VALUE CHANGE */
-	height: 13rem;
+	height: 10rem;
 	margin: 1rem;
+	padding: 1rem;
 	border-radius: 4%;
 	background-color: white;
+	color: #adb1cc;
 }
 
 /* Weather Segment Section */
