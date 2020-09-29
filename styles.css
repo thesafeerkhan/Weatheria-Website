@@ -1,0 +1,21 @@
+@media (min-width: 768px) {
+	.container {
+		display: flex;
+	}
+}
+
+.container section {
+	border: 1px #ccc solid;
+	padding: 10px;
+}
+.nav {
+	flex: 1;
+}
+
+.highlights {
+	flex: 3;
+}
+
+.weather-segment {
+	flex: 2;
+}
