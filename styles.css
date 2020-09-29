@@ -1,21 +1,54 @@
-@media (min-width: 768px) {
-	.container {
-		display: flex;
-	}
+html {
+	font-family: "Poppins", sans-serif;
+	background-color: #adb1cc;
 }
 
-.container section {
-	border: 1px #ccc solid;
-	padding: 10px;
+h1,
+h2 {
+	color: #333866;
 }
+
+/* Main */
+.container {
+	display: flex;
+	margin: 2rem;
+	border-radius: 4%;
+	background-color: white;
+}
+
+/* Nav Section */
 .nav {
 	flex: 1;
+	margin: 3rem;
 }
 
+/* Highlights Section */
 .highlights {
+	display: inline-block;
 	flex: 3;
+	margin: 1rem;
+	padding: 5rem;
+	border-radius: 4%;
+	background-color: #adb1cc;
 }
 
+.highlights-container {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.highlights-container div {
+	flex-basis: 45%;
+	/* HARDCODED VALUE CHANGE */
+	height: 13rem;
+	margin: 1rem;
+	border-radius: 4%;
+	background-color: white;
+}
+
+/* Weather Segment Section */
 .weather-segment {
 	flex: 2;
+	margin: 3rem;
 }
