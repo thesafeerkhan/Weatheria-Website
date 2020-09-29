@@ -9,6 +9,38 @@ h2 {
 }
 
 /* Main */
+.brand-icon {
+	color: #ffbd50;
+}
+.brand-name {
+	font-weight: 900;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+li a {
+	display: block;
+	text-decoration: none;
+}
+
+.active {
+	background-color: #adb1cc;
+	border-radius: 3%;
+	padding: 1px 10px;
+	color: white;
+}
+
+.nav-icons {
+	color: #a2acff;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	background-color: white;
+}
+
 .container {
 	display: flex;
 	margin: 2rem;
