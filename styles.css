@@ -102,10 +102,13 @@ li a:not(.active):hover {
 	color: var(--main-bg-color);
 }
 
-/* Profile Segment Section */
+/* Weather Section*/
 .weather-segment {
 	flex: 2;
 	margin: 3rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
 }
 
 .profile-segment {
@@ -114,12 +117,7 @@ li a:not(.active):hover {
 	min-width: 200px;
 }
 
-.profile-name {
-	display: inline-block;
-}
-
 .profile-image {
-	display: inline-block;
 	width: 4rem;
 	height: 4rem;
 	padding: 0 10px;
@@ -132,10 +130,10 @@ li a:not(.active):hover {
 	align-items: center;
 }
 
-/* Location Details Section */
 .location-segment {
 	display: flex;
 	flex-direction: column;
+	text-align: center;
 }
 
 .location-segment h1,
@@ -144,20 +142,43 @@ li a:not(.active):hover {
 	padding: 0;
 	margin: 0;
 	transform: scale(0.7);
-	background-color: white;
 }
 
-/* Weather Highlights */
 .current-day {
+	margin: 0;
 	text-align: center;
+	font-size: 2rem;
 }
 
 .weather-div {
 	display: flex;
 	justify-content: center;
+	text-align: center;
+}
+
+.weather-container {
+	padding: 1rem;
+}
+.weather-icon {
+	margin: 0;
+	position: relative;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	color: var(--secondary-highlight-color);
 }
 
 .weather-highlights {
 	display: flex;
 	justify-content: center;
+	justify-content: space-between;
+	text-align: center;
+}
+
+.ws-element {
+	width: 150px;
+}
+
+.ws-icon {
+	color: var(--main-highlight-color);
 }
