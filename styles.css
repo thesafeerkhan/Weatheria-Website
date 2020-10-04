@@ -76,11 +76,23 @@ li a:not(.active):hover {
 	background-color: white;
 }
 
+/* Search */
+
+.search {
+	text-align: center;
+	padding: 1rem;
+}
+
+.search-box {
+	padding: 1rem;
+	font-size: 20px;
+}
+
 /* Highlights Section */
 .highlights {
 	flex: 3;
 	margin: 1rem;
-	padding: 2rem;
+	padding: 1rem;
 	border-radius: 50px;
 	background-color: var(--main-bg-color);
 }
