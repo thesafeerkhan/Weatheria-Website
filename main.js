@@ -6,7 +6,8 @@ const searchBox = document.querySelector(".search-box");
 const searchButton = document.querySelector(".search-button");
 
 // Highlights
-let setRiseHighlight = document.querySelector(".sunrise-sunset");
+let sunRise = document.querySelector(".sunrise");
+let sunSet = document.querySelector(".sunset");
 let windHighlight = document.querySelector(".wind-status");
 let visHighlight = document.querySelector(".visibility");
 let humidHighlight = document.querySelector(".humidity");
@@ -43,7 +44,10 @@ function getWeather(locationQuery) {
 
 function updateWeather(weatherObject) {
 	visHighlight.innerText = weatherObject.visibility / 1000 + " km";
-	setRiseHighlight.innerText = unixToLocation(weatherObject.sys.sunrise) + "/" + unixToLocation(weatherObject.sys.sunset);
+
+	sunRise.innerHTML = `<i class="fas fa-arrow-alt-circle-up fa-lg sunIcon"></i> ${unixToLocation(weatherObject.sys.sunrise)} AM`;
+	sunSet.innerHTML = `<i class="fas fa-arrow-alt-circle-down fa-lg sunIcon"></i> ${unixToLocation(weatherObject.sys.sunset)} PM`;
+
 	windHighlight.innerText = weatherObject.wind.speed + " m/s";
 	humidHighlight.innerText = weatherObject.main.humidity + " %";
 
@@ -57,7 +61,6 @@ function updateWeather(weatherObject) {
 	locationTemp.innerText = Math.round(weatherObject.main.temp) + "°c";
 	locationWind.innerText = weatherObject.wind.speed + " m/s";
 	locationHumid.innerText = weatherObject.main.humidity + " %";
-	console.log(weatherObject);
 	// locationHighLow.innerText = Math.round(weatherObject.main.temp_min) + "°c / " + Math.round(weatherObject.main.temp_max) + "°c";
 }
 

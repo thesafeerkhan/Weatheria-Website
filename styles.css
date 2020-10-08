@@ -97,6 +97,10 @@ li a:not(.active):hover {
 	background-color: var(--main-bg-color);
 }
 
+.highlight-header {
+	margin-left: 3rem;
+}
+
 .highlights-container {
 	display: flex;
 	justify-content: center;
@@ -114,6 +118,10 @@ li a:not(.active):hover {
 	color: var(--main-highlight-color);
 }
 
+.sunIcon {
+	color: var(--secondary-highlight-color);
+}
+
 /* Weather Section*/
 .weather-segment {
 	flex: 2;
@@ -127,6 +135,7 @@ li a:not(.active):hover {
 	display: flex;
 	justify-content: center;
 	min-width: 200px;
+	margin-bottom: 1rem;
 }
 
 .profile-image {
@@ -146,6 +155,7 @@ li a:not(.active):hover {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
+	margin-bottom: 3rem;
 }
 
 .location-segment h1,
@@ -153,19 +163,15 @@ li a:not(.active):hover {
 .location-segment h3 {
 	padding: 0;
 	margin: 0;
-	transform: scale(0.7);
-}
-
-.current-day {
-	margin: 0;
-	text-align: center;
-	font-size: 2rem;
+	transform: scale(1);
 }
 
 .weather-div {
 	display: flex;
 	justify-content: center;
 	text-align: center;
+	transform: scale(1.5);
+	margin-bottom: 3rem;
 }
 
 .weather-container {
