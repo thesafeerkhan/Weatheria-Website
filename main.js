@@ -1,5 +1,7 @@
 // OpenWeather API
 const apiKey = "64bbc54ffcc85312323053c0b353656c";
+// aqicn API 
+const apiKey2 = "bfb4961115bee56248fd03be6db61cce53cc0982"
 
 // Variables
 const searchBox = document.querySelector(".search-box");
@@ -20,6 +22,9 @@ let visCat = document.querySelector(".visibility-cat");
 
 let humidHighlight = document.querySelector(".humidity");
 let humidCat = document.querySelector(".humidity-cat");
+
+let aqIndex = document.querySelector('.aq-index');
+let aqCat = document.querySelector('.aq-cat');
 
 // Location
 let locationCity = document.querySelector(".location-city");
@@ -94,6 +99,14 @@ function updateWeather(weatherObject) {
 	humidHighlight.innerText = weatherObject.main.humidity + " %";
 	humidCat.innerText = getHumidityCat(weatherObject.main.humidity);
 
+	// Air Quality
+	fetch(`https://api.waqi.info/feed/${weatherObject.name}/?token=${apiKey2}`)
+		.then((resp) => resp.json())
+		.then(function (aqData) {
+			aqIndex.innerText = aqData.data.aqi;
+			aqCat.innerText = getAQLevel(aqData.data.aqi);
+		});
+
 	// Location
 	locationCity.innerText = weatherObject.name;
 	locationCountry.innerText = weatherObject.sys.country;
@@ -140,6 +153,15 @@ function getHumidityCat(humidity) {
 	if (humidity > 70) return "High";
 	if (humidity > 30) return "Average";
 	return "Low";
+}
+
+function getAQLevel(aqIndex) {
+	if (aqIndex > 300) return "Hazardous";
+	if (aqIndex > 200) return "Very Unhealthy";
+	if (aqIndex > 150) return "Unhealthy";
+	if (aqIndex > 100) return "Unhealthy for sensitive groups";
+	if (aqIndex > 50) return "Moderate";
+	return "Good";
 }
 
 function getDate(d) {
