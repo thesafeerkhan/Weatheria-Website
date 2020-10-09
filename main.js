@@ -6,11 +6,20 @@ const searchBox = document.querySelector(".search-box");
 const searchButton = document.querySelector(".search-button");
 
 // Highlights
+let uvIndex = document.querySelector(".uv-index");
+let uvDegree = document.querySelector(".uv-degree");
+
 let sunRise = document.querySelector(".sunrise");
 let sunSet = document.querySelector(".sunset");
+
 let windHighlight = document.querySelector(".wind-status");
+let windDirection = document.querySelector(".wind-direction");
+
 let visHighlight = document.querySelector(".visibility");
+let visCat = document.querySelector(".visibility-cat");
+
 let humidHighlight = document.querySelector(".humidity");
+let humidCat = document.querySelector(".humidity-cat");
 
 // Location
 let locationCity = document.querySelector(".location-city");
@@ -43,14 +52,49 @@ function getWeather(locationQuery) {
 }
 
 function updateWeather(weatherObject) {
-	visHighlight.innerText = weatherObject.visibility / 1000 + " km";
+	// Uv Index
+	fetch(`http://api.openweathermap.org/data/2.5/uvi?lat=${weatherObject.coord.lat}&lon=${weatherObject.coord.lon}&appid=${apiKey}`)
+		.then((resp) => resp.json())
+		.then(function (uvData) {
+			uvIndex.innerText = uvData.value;
 
+			var i = 0;
+			if (i == 0) {
+				i = 1;
+				var elem = document.getElementById("myBar");
+				var width = 1;
+				var id = setInterval(frame, 10);
+				function frame() {
+					if (width < uvData.value * 8.3) {
+						width++;
+						elem.style.width = width + "%";
+					} else {
+						clearInterval(id);
+						i = 0;
+					}
+				}
+			}
+
+			uvDegree.innerText = getUvDegree(uvData.value);
+		});
+
+	// Sunrise and Sunset
 	sunRise.innerHTML = `<i class="fas fa-arrow-alt-circle-up fa-lg sunIcon"></i> ${unixToLocation(weatherObject.sys.sunrise)} AM`;
 	sunSet.innerHTML = `<i class="fas fa-arrow-alt-circle-down fa-lg sunIcon"></i> ${unixToLocation(weatherObject.sys.sunset)} PM`;
 
-	windHighlight.innerText = weatherObject.wind.speed + " m/s";
-	humidHighlight.innerText = weatherObject.main.humidity + " %";
+	// Wind
+	windHighlight.innerText = Math.round(weatherObject.wind.speed * 3.5) + " km/h";
+	windDirection.innerText = getWindDirection(weatherObject.wind.deg);
 
+	// Visibility
+	visHighlight.innerText = weatherObject.visibility / 1000 + " km";
+	visCat.innerText = getVisiCat(weatherObject.visibility / 1000);
+
+	// Humidity
+	humidHighlight.innerText = weatherObject.main.humidity + " %";
+	humidCat.innerText = getHumidityCat(weatherObject.main.humidity);
+
+	// Location
 	locationCity.innerText = weatherObject.name;
 	locationCountry.innerText = weatherObject.sys.country;
 	//Date
@@ -62,6 +106,40 @@ function updateWeather(weatherObject) {
 	locationWind.innerText = weatherObject.wind.speed + " m/s";
 	locationHumid.innerText = weatherObject.main.humidity + " %";
 	// locationHighLow.innerText = Math.round(weatherObject.main.temp_min) + "°c / " + Math.round(weatherObject.main.temp_max) + "°c";
+}
+
+function getUvDegree(uv) {
+	if (uv > 11) return "Extreme";
+	if (uv > 10) return "Very High";
+	if (uv > 7) return "High";
+	if (uv > 5) return "Medium";
+	return "Low";
+}
+
+function getWindDirection(degree) {
+	if (degree > 337.5) return "Northerly";
+	if (degree > 292.5) return "North Westerly";
+	if (degree > 247.5) return "Westerly";
+	if (degree > 202.5) return "South Westerly";
+	if (degree > 157.5) return "Southerly";
+	if (degree > 122.5) return "South Easterly";
+	if (degree > 67.5) return "Easterly";
+	if (degree > 22.5) {
+		return "North Easterly";
+	}
+	return "Northerly";
+}
+
+function getVisiCat(visibility) {
+	if (visibility > 15) return "Clear";
+	if (visibility > 6) return "Normal";
+	return "Little";
+}
+
+function getHumidityCat(humidity) {
+	if (humidity > 70) return "High";
+	if (humidity > 30) return "Average";
+	return "Low";
 }
 
 function getDate(d) {

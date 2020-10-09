@@ -107,7 +107,7 @@ li a:not(.active):hover {
 	flex-wrap: wrap;
 }
 
-.highlights-container div {
+.highlights-div {
 	width: 300px;
 	height: 200px;
 
@@ -116,6 +116,21 @@ li a:not(.active):hover {
 	border-radius: 4%;
 	background-color: white;
 	color: var(--main-highlight-color);
+}
+
+.highlights-container h1 {
+	font-size: 2rem;
+}
+
+#myProgress {
+	width: 100%;
+	background-color: #f7f7f7;
+}
+
+#myBar {
+	width: 1%;
+	height: 30px;
+	background-color: var(--secondary-highlight-color);
 }
 
 .sunIcon {
