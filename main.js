@@ -70,7 +70,7 @@ function updateWeather(weatherObject) {
 				var width = 1;
 				var id = setInterval(frame, 10);
 				function frame() {
-					if (width < uvData.value * 8.3) {
+					if (width < uvData.value * 6.7) {
 						width++;
 						elem.style.width = width + "%";
 					} else {

@@ -32,7 +32,7 @@ h4 {
 /* Nav Section */
 .nav {
 	flex: 0;
-	margin: 1.5rem;
+	margin: 2rem;
 }
 
 .brand-icon {
@@ -131,6 +131,11 @@ li a:not(.active):hover {
 	width: 1%;
 	height: 30px;
 	background-color: var(--secondary-highlight-color);
+}
+
+.uvi-levels {
+	display: flex;
+	justify-content: space-evenly;
 }
 
 .sunIcon {
