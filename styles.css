@@ -142,6 +142,8 @@ li a:not(.active):hover {
 	color: var(--secondary-highlight-color);
 }
 
+.compassIcon {
+}
 /* Weather Section*/
 .weather-segment {
 	flex: 2;
