@@ -58,7 +58,7 @@ function getWeather(locationQuery) {
 
 function updateWeather(weatherObject) {
 	// Uv Index
-	fetch(`http://api.openweathermap.org/data/2.5/uvi?lat=${weatherObject.coord.lat}&lon=${weatherObject.coord.lon}&appid=${apiKey}`)
+	fetch(`https://api.openweathermap.org/data/2.5/uvi?lat=${weatherObject.coord.lat}&lon=${weatherObject.coord.lon}&appid=${apiKey}`)
 		.then((resp) => resp.json())
 		.then(function (uvData) {
 			uvIndex.innerText = uvData.value;
