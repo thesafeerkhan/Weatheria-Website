@@ -88,7 +88,7 @@ function updateWeather(weatherObject) {
 	sunSet.innerHTML = `<i class="fas fa-arrow-alt-circle-down fa-lg sunIcon"></i> ${unixToLocation(weatherObject.sys.sunset)} PM`;
 
 	// Wind
-	windHighlight.innerText = Math.round(weatherObject.wind.speed * 3.5) + " km/h";
+	windHighlight.innerText = Math.round(weatherObject.wind.speed * 3.6) + " km/h";
 	windDirection.innerText = getWindDirection(weatherObject.wind.deg);
 
 	// Visibility
@@ -116,9 +116,9 @@ function updateWeather(weatherObject) {
 
 	locationWeather.innerText = weatherObject.weather[0].description;
 	locationTemp.innerText = Math.round(weatherObject.main.temp) + "°c";
-	locationWind.innerText = weatherObject.wind.speed + " m/s";
+	locationWind.innerText = Math.round(weatherObject.wind.speed * 3.6) + " km/h";
 	locationHumid.innerText = weatherObject.main.humidity + " %";
-	// locationHighLow.innerText = Math.round(weatherObject.main.temp_min) + "°c / " + Math.round(weatherObject.main.temp_max) + "°c";
+	locationPrecip.innerText = "N/A";
 }
 
 function getUvDegree(uv) {
@@ -161,7 +161,8 @@ function getAQLevel(aqIndex) {
 	if (aqIndex > 150) return "Unhealthy";
 	if (aqIndex > 100) return "Unhealthy for sensitive groups";
 	if (aqIndex > 50) return "Moderate";
-	return "Good";
+	if (aqIndex > 0) return "Good";
+	return "-";
 }
 
 function getDate(d) {
